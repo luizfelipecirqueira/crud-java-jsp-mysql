@@ -35,7 +35,12 @@
                 st.executeUpdate(); //Executa o comando INSERT
                 out.print("Produto Cadastrado com Sucesso");
             } catch (Exception e) {
-                out.print("Mensagem de erro: " + e.getMessage());
+                String erro = e.getMessage();
+                if (erro.contains("Duplicate entry")) {
+                    out.print("Este produto já está cadastrado");
+                } else {
+                    out.print("Mensagem de erro: " + erro);
+                }
             }
         %>
     </body>
